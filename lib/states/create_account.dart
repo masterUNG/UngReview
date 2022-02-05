@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ungreview/utility/my_constant.dart';
 import 'package:ungreview/utility/my_dialog.dart';
@@ -52,7 +53,9 @@ class _CreateAccountState extends State<CreateAccount> {
           } else if (typeUser?.isEmpty ?? true) {
             MyDialog(context: context)
                 .normalDialog('No Type User', 'Please Choose Type User');
-          } else {}
+          } else {
+            processCreateAccount();
+          }
         },
       );
 
@@ -126,4 +129,15 @@ class _CreateAccountState extends State<CreateAccount> {
         iconData: Icons.fingerprint,
         changeFunc: (String string) => name = string.trim(),
       );
+
+  Future<void> processCreateAccount() async {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email!, password: password!)
+        .then((value) {
+      print('Create Account Success');
+    })
+        // ignore: invalid_return_type_for_catch_error
+        .catchError((onError) => MyDialog(context: context)
+            .normalDialog(onError.code, onError.message));
+  }
 }
