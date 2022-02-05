@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "893555694947",
+    "project_id": "ungreview-7ba04",
+    "storage_bucket": "ungreview-7ba04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893555694947:android:d5f07d943c482546854756",
+        "android_client_info": {
+          "package_name": "com.flutterthailand.ungreview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893555694947-lknbjlai6k3t05lbdseoheo5snjh7n92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACwP-OXV0ukC9qc3ag7io5WxGk-RMI2GY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893555694947-lknbjlai6k3t05lbdseoheo5snjh7n92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
