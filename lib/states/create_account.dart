@@ -1,5 +1,9 @@
+// ignore_for_file: avoid_print
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ungreview/models/user_model.dart';
 import 'package:ungreview/utility/my_constant.dart';
 import 'package:ungreview/utility/my_dialog.dart';
 import 'package:ungreview/widgets/show_button.dart';
@@ -133,8 +137,18 @@ class _CreateAccountState extends State<CreateAccount> {
   Future<void> processCreateAccount() async {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email!, password: password!)
-        .then((value) {
-      print('Create Account Success');
+        .then((value) async {
+      String uid = value.user!.uid;
+      print('Create Account Success uid ==> $uid');
+
+      UserModel userModel = UserModel(
+          name: name!, email: email!, password: password!, typeuser: typeUser!);
+
+      await FirebaseFirestore.instance
+          .collection('user')
+          .doc(uid)
+          .set(userModel.toMap())
+          .then((value) => Navigator.pop(context));
     })
         // ignore: invalid_return_type_for_catch_error
         .catchError((onError) => MyDialog(context: context)

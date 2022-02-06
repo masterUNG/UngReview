@@ -4,6 +4,9 @@ class MyConstant {
   static String appName = 'Ung Store';
   static String rountAuthen = '/authen';
   static String rountCreateAccount = '/createAccount';
+  static String rountBuyer = '/buyer';
+  static String rountSeller = '/seller';
+   static String rountAddProduct = '/addProduct';
 
   static Color primary = const Color(0xff309aa8);
   static Color dark = const Color(0xff00353d);
